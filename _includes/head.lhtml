@@ -1,7 +1,7 @@
     <meta charset="UTF-8" />
     <meta name="generated" content="{{ 'now' | date: '%Y-%m-%d %H:%M:%S' }}" />
 {% if jekyll.environment == "production" %}
-    {% include google-analytics.html %}
+    {% include google-analytics.lhtml %}
 {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ site.title }}{% if page.title %} | {{ page.title }}{% endif %}</title>
