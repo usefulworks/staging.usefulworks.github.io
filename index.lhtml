@@ -1,10 +1,12 @@
 ---
-layout: default
+layout: page-template
+permalink: index.html
 title: Home
 ---
 <section class="hero">
     <div class="hero-text">
-        <p>Transform your business</p>
+        <p>Transform Your Business</p>
+        <p>Do you want to know how?</p>
         <a href="contact.html" role="button" class="action-button">
             <svg><use href="#svg-mail-icon" /></svg>
             <span>Get In Touch</span>

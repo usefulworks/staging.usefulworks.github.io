@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 UsefulWorks Ltd. */
+/* Copyright (c) 2025 UsefulWorks Ltd. All Rights Reserved */
 
 :root {
     --uw-font-family-brand: Ultra, Georgia, Garamond, "Times New Roman", serif, var(--pico-font-family-emoji);
@@ -166,7 +166,7 @@ header > nav.vertical-menu-showing {
     padding-bottom: 0.4rem;
     ul.navbar-links {
         display: flex;
-        max-height: 200px;
+        max-height: calc(4 * 56px); /* n-children * child-height */
     }
 }
 
@@ -198,8 +198,8 @@ header > nav {
         padding-right: 1rem;
     }
     .navbar-links {
-        display: flex;     /* must match in .vertical-menu-showing */
-        max-height: 200px; /* must match in .vertical-menu-showing */
+        display: flex;              /* must match in .vertical-menu-showing */
+        max-height: calc(4 * 56px); /* must match in .vertical-menu-showing */
         flex-direction: row;
         justify-content: space-between;
         gap: 1rem;
@@ -278,12 +278,14 @@ body > main {
     left: 50%;
     transform: translate(-50%, -50%);
     p {
-        font-family: var(--uw-font-family-brand);
         font-size: 3rem;
-        color: #fff;
+        color:#fff;
         letter-spacing: 0.2rem;
+        &:first-child {
+            font-family: var(--uw-font-family-brand);
+        }
         &:last-of-type {
-            padding-bottom: 1.4rem;
+            padding-bottom: 1.5rem;
         }
     }
 }
