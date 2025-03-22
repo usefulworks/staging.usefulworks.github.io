@@ -6,7 +6,7 @@ title: Home
 <section class="hero">
     <div class="hero-text">
         <p>Transform Your Business</p>
-        <p>Do you want to know how?</p>
+        <p>Do you want to know more?</p>
         <a href="contact.html" role="button" class="action-button">
             <svg><use href="#svg-mail-icon" /></svg>
             <span>Get In Touch</span>
