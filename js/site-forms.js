@@ -9,7 +9,7 @@ const Forms = (function(){
 
     return {
         init : function() {
-            console.log("Forms.init()");
+            $debug.log("Forms.init()");
             _recaptcha = document.getElementById($UW.recaptcha_container);
             if (!_recaptcha) {
                 console.warn("Recaptcha container not found");
@@ -21,8 +21,8 @@ const Forms = (function(){
             // grecaptcha.render("g-recaptcha", { "sitekey": "{{ sitekey }}" });
         },
         recaptchaCallback : function(response) {
-            console.log("Forms.recaptchaCallback()");
-            //console.log(response);
+            $debug.log("Forms.recaptchaCallback()");
+            //$debug.log(response);
         },
     }
 

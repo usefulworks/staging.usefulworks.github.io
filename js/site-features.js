@@ -30,7 +30,7 @@ const Features = (function() {
 
     return {
         init() { //fn
-            console.log("Features.init()");
+            $debug.log("Features.init()");
             // inject a new style element
             const style = document.createElement("style");
             style.textContent = getCssText();

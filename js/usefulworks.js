@@ -12,6 +12,10 @@
 (function(window, rootContext) {
 
     // check on context for window/document/node/etc...
+    if (window.$debug === undefined) {
+        window.$debug = window.console;
+    }
+
     // build (for now, the only context is DOM)
 
     // ready state (shared)
@@ -123,12 +127,12 @@
                 return this.whereWithIndex((i, e) => i % 2 == 0);
             },
             on(eventName, handler) {
-                console.log("UsefulWorks.on" + eventName);
+                $debug.log("UsefulWorks.on" + eventName);
                 this.each((i, e) => e.addEventListener(eventName, handler, false));
                 return this;
             },
             off(eventName, handler) {
-                console.log("UsefulWorks.off" + eventName);
+                $debug.log("UsefulWorks.off" + eventName);
                 // doesn't work with anonymous/arrow functions
                 this.each((i, e) => e.removeEventListener(eventName, handler, false));
                 return this;
@@ -175,7 +179,7 @@
             //   key generation by supplying a (k,v) => k function that will be applied
             //   to each item, e.g. [default] (0, div) => 0; [custom] (0, div) => div.id
             toObject(keyDelegate) {
-                console.log(`UsefulWorks.toObject(${typeof keyDelegate})`);
+                $debug.log(`UsefulWorks.toObject(${typeof keyDelegate})`);
                 let obj = {}, fn = typeof keyDelegate === "function" ? keyDelegate : (k, v) => k;
                 this.each((k, v) => obj[fn(k, v)] = v);
                 return obj;
@@ -189,7 +193,7 @@
     const init = UsefulWorks.p.init = (function() {
         // UsefulWorks constructor: build the new UsefulWorks object
         return function (selector, context) {
-            console.log(`UsefulWorks.init(): ${typeof selector === "string" ? "[" + selector + "]" : Object.prototype.toString.call(selector)}`);
+            $debug.log(`UsefulWorks.init(): ${typeof selector === "string" ? "[" + selector + "]" : Object.prototype.toString.call(selector)}`);
 
             this._context = context;
             this._context.selector = selector;
@@ -374,13 +378,13 @@
         noop() {},
         now() { return window.performance.now() },
         ready(handler) {
-            console.log(`UsefulWorks.ready() isReady=${_isReady} handler=${typeof handler}`);
+            $debug.log(`UsefulWorks.ready() isReady=${_isReady} handler=${typeof handler}`);
             callWhenReady(handler);
             if (_isReady) { doReady(); }
             return this;
         },
         whatIsThis(thisthis = this) {
-            console.log(`whatIsThis: '${typeof thisthis}' => ${thisthis}`);
+            $debug.log(`whatIsThis: '${typeof thisthis}' => ${thisthis}`);
         }
     });
 
@@ -419,7 +423,7 @@
     // inner iife: setup window/document ready listeners
     (function() {
         function completed() {
-            console.log(`UsefulWorks.completed() by ${this === window ? "window" : "document"}`);
+            $debug.log(`UsefulWorks.completed() by ${this === window ? "window" : "document"}`);
             document.removeEventListener("DOMContentLoaded", completed);
             window.removeEventListener("load", completed);
             _isReady = true;
@@ -434,7 +438,7 @@
             document.addEventListener("DOMContentLoaded", completed);
             window.addEventListener("load", completed);
         }
-        console.log("UsefulWorks(): ready-listeners listening");
+        $debug.log("UsefulWorks(): ready-listeners listening");
     }()); // inner iife
 
 }(window, {})); // outer iife: (window, rootContext);
