@@ -12,11 +12,11 @@
 (function(window, rootContext) {
 
     // check on context for window/document/node/etc...
-    if (window.$debug === undefined) {
-        window.$debug = window.console;
-    }
+    const _con = (window.$environment !== undefined && window.$environment === "production")
+        ? noopConsole()
+        : window.console;
 
-    // build (for now, the only context is DOM)
+    // => build (for now, the only context is DOM)
 
     // ready state (shared)
     let _isReady = false,
@@ -111,6 +111,12 @@
                 elementsOnly.call(this).forEach(e => e.classList.toggle(className));
                 return this;
             },
+            get debug() {
+                return UsefulWorks.debug;
+            },
+            log(args) {
+                UsefulWorks.log(args);
+            },
             each(delegate) {
                 return UsefulWorks.each(this, delegate);
             },
@@ -127,12 +133,12 @@
                 return this.whereWithIndex((i, e) => i % 2 == 0);
             },
             on(eventName, handler) {
-                $debug.log("UsefulWorks.on" + eventName);
+                this.log("UsefulWorks.on" + eventName);
                 this.each((i, e) => e.addEventListener(eventName, handler, false));
                 return this;
             },
             off(eventName, handler) {
-                $debug.log("UsefulWorks.off" + eventName);
+                this.log("UsefulWorks.off" + eventName);
                 // doesn't work with anonymous/arrow functions
                 this.each((i, e) => e.removeEventListener(eventName, handler, false));
                 return this;
@@ -179,7 +185,7 @@
             //   key generation by supplying a (k,v) => k function that will be applied
             //   to each item, e.g. [default] (0, div) => 0; [custom] (0, div) => div.id
             toObject(keyDelegate) {
-                $debug.log(`UsefulWorks.toObject(${typeof keyDelegate})`);
+                this.log(`UsefulWorks.toObject(${typeof keyDelegate})`);
                 let obj = {}, fn = typeof keyDelegate === "function" ? keyDelegate : (k, v) => k;
                 this.each((k, v) => obj[fn(k, v)] = v);
                 return obj;
@@ -193,7 +199,7 @@
     const init = UsefulWorks.p.init = (function() {
         // UsefulWorks constructor: build the new UsefulWorks object
         return function (selector, context) {
-            $debug.log(`UsefulWorks.init(): ${typeof selector === "string" ? "[" + selector + "]" : Object.prototype.toString.call(selector)}`);
+            this.log(`UsefulWorks.init(): ${typeof selector === "string" ? "[" + selector + "]" : Object.prototype.toString.call(selector)}`);
 
             this._context = context;
             this._context.selector = selector;
@@ -259,6 +265,7 @@
                 this._length++;
             }
         }
+
     }()); //init
 
     // merge objects in a coalescey way
@@ -345,6 +352,12 @@
                 window[name] = UsefulWorks;
             }
         },
+        get debug() {
+            return _con;
+        },
+        log(args) {
+            _con.log(args);
+        },
         // iterates over the current sequence and calls delegate(int:index,obj:item) for array-likes or
         // delegate(object:propertyName,obj:item) on each item
         each(target, delegate) {
@@ -378,13 +391,13 @@
         noop() {},
         now() { return window.performance.now() },
         ready(handler) {
-            $debug.log(`UsefulWorks.ready() isReady=${_isReady} handler=${typeof handler}`);
+            this.log(`UsefulWorks.ready() isReady=${_isReady} handler=${typeof handler}`);
             callWhenReady(handler);
             if (_isReady) { doReady(); }
             return this;
         },
         whatIsThis(thisthis = this) {
-            $debug.log(`whatIsThis: '${typeof thisthis}' => ${thisthis}`);
+            this.log(`whatIsThis: '${typeof thisthis}' => ${thisthis}`);
         }
     });
 
@@ -420,10 +433,30 @@
         return value && value.nodeType === 1;
     }
 
+    function noopConsole() {
+        return {
+            assert: () => {},
+            clear:  () => {},
+            clear:  () => {},
+            count:  () => {},
+            error:  () => {},
+            group:  () => {},
+            groupCollapsed: () => {},
+            groupEnd:       () => {},
+            info:    () => {},
+            log:     () => {},
+            table:   () => {},
+            time:    () => {},
+            timeEnd: () => {},
+            trace:   () => {},
+            warn:    () => {}
+        }
+    }
+
     // inner iife: setup window/document ready listeners
     (function() {
         function completed() {
-            $debug.log(`UsefulWorks.completed() by ${this === window ? "window" : "document"}`);
+            UsefulWorks.debug.log(`UsefulWorks.completed() by ${this === window ? "window" : "document"}`);
             document.removeEventListener("DOMContentLoaded", completed);
             window.removeEventListener("load", completed);
             _isReady = true;
@@ -438,7 +471,7 @@
             document.addEventListener("DOMContentLoaded", completed);
             window.addEventListener("load", completed);
         }
-        $debug.log("UsefulWorks(): ready-listeners listening");
     }()); // inner iife
+
 
 }(window, {})); // outer iife: (window, rootContext);

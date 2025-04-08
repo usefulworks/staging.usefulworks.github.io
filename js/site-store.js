@@ -19,7 +19,7 @@ class AppStorage {
         this.#ns = namespace;
         this.#session = session;
         this.#store = session ? window.sessionStorage : window.localStorage;
-        $debug.log(`new AppStorage(${namespace}, ${session ? 'session' : 'local'})`);
+        $UW.log(`new AppStorage(${namespace}, ${session ? 'session' : 'local'})`);
     }
 
     get namespace() { return this.#ns; }

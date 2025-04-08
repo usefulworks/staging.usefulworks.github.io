@@ -4,10 +4,10 @@
 
 const NavBar = {
     init : function() {
-        $debug.log("NavBar.init");
+        $UW.log("NavBar.init");
         const NAVBAR = $UW("nav.top-nav");
         const initNavMenuToggle = function () {
-            $debug.log("NavBar.initNavMenuToggle");
+            $UW.log("NavBar.initNavMenuToggle");
             const SHOWING_CNAME = "vertical-menu-showing";
             const MENU_BTN = $UW("#navbar-menu-button");
             if (MENU_BTN && NAVBAR) {
@@ -17,7 +17,7 @@ const NavBar = {
             }
         };
         const initWindowScroll = function() {
-            $debug.log("NavBar.initWindowScroll");
+            $UW.log("NavBar.initWindowScroll");
             const TOP_NAV_SLIM_CNAME = "top-nav-slim";
             const HANDLER = function() {
                 if (NAVBAR) {

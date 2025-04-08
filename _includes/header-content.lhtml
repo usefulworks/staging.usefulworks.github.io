@@ -1,10 +1,11 @@
 <nav class="top-nav fixed-top" aria-label="top navigation" data-feature="{{ site.uw.features.blog.output }}">
     <div class="navbar-brand">
-        <svg class="cogstar">
-            <use class="outer" href="#svg-cogstar-outer" />
-            <use class="inner" href="#svg-cogstar-inner" />
+        <svg class="uw-gear-logo">
+            <use href="#svg-gear-logo" />
         </svg>
-        <a href="{{ site.uw.loc.href.home }}"><span class="uw-useful">Useful</span><span class="uw-works">Works</span></a>
+        <a class="uw-logo-text" href="{{ site.uw.loc.href.home }}">
+            <span class="uw-useful">Useful</span><span class="uw-works">Works</span>
+        </a>
     </div>
     <div class="navbar-toggler">
         <button id="navbar-menu-button" role="button" class="menu-button"><svg><use href="#svg-menu-hamburger-icon" /></svg></button>

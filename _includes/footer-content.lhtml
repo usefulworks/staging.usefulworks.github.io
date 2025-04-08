@@ -1,6 +1,6 @@
 <ul class="first-row">
     <li class="logo-box">
-        <svg class="cogstar"><use href="#svg-cogstar" /></svg>
+        <svg class="uw-gear-logo"><use href="#svg-gear-logo" /></svg>
         <span class="uw-logo-text">
             <span class="uw-useful">Useful</span><span class="uw-works">Works</span>
         </span>

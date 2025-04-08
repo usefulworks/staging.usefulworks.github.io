@@ -6,12 +6,12 @@ title: Home
 <section class="hero">
     <div class="hero-text container">
         <p class="headline">Constructive Consultancy</p>
-        <p class="subheadline">Advice and action to help start-ups and scale-ups grow quickly and smoothly</p>
+        <p class="subheadline narrower">Advice and action to help start-ups and scale-ups grow quickly and smoothly</p>
     </div>
-    <div class="hero-cta container">
+    <div class="hero-cta container narrower">
         <a href="contact.html" role="button" class="action-button">
             <svg><use href="#svg-calendar-icon" /></svg>
-            <span>Take half and hour to find out more</span>
+            <span>Take half an hour to find out more</span>
         </a>
     </div>
 </section>
