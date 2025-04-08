@@ -40,7 +40,7 @@
     <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg?{{ epoch-ms }}" />
     <link rel="shortcut icon" type="image/x-icon" href="./favicon/favicon.ico?{{ epoch-ms }}" />
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png?{{ epoch-ms }}" />
-    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link rel="manifest" href="./assets/site.webmanifest" />
 {% assign all-js-literals = "" | split: "" %}
 {% if layout.js-literals %}
     {% assign all-js-literals = all-js-literals | concat: layout.js-literals %}
