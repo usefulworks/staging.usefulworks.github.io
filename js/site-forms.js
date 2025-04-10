@@ -9,10 +9,10 @@ const Forms = (function(){
 
     return {
         init : function() {
-            console.log("Forms.init()");
-            _recaptcha = document.getElementById($UW.recaptcha_container);
+            $UW.log("Forms.init()");
+            _recaptcha = document.getElementById($literals.recaptcha_container);
             if (!_recaptcha) {
-                console.warn("Recaptcha container not found");
+                $UW.debug.warn("Recaptcha container not found");
             }
         },
         renderRecaptcha : function() {
@@ -21,8 +21,7 @@ const Forms = (function(){
             // grecaptcha.render("g-recaptcha", { "sitekey": "{{ sitekey }}" });
         },
         recaptchaCallback : function(response) {
-            console.log("Forms.recaptchaCallback()");
-            //console.log(response);
+            $UW.log("Forms.recaptchaCallback()");
         },
     }
 

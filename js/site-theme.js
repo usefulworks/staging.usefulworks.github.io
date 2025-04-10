@@ -98,11 +98,11 @@ const Themes = {
 
         // find theme to use, defaulting to system theme
         const theme = userTheme == Theme.Undefined ? systemTheme.value : userTheme;
-        console.log("themes: [user]=" + userTheme + " [system]=" + systemTheme.value + " [using]=" + theme);
+        $UW.log("themes: [user]=" + userTheme + " [system]=" + systemTheme.value + " [using]=" + theme);
 
         // set theme attribute
         if (!themeAttribute.init) {
-            console.log("can't set theme attribute; quitting")
+            $UW.log("can't set theme attribute; quitting")
             return;
         }
         themeAttribute.theme = theme;

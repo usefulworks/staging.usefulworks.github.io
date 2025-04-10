@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "UsefulWorks: Constructive Consultancy",
+  "short_name": "UsefulWorks",
   "icons": [
     {
       "src": "/favicon/web-app-manifest-192x192.png",
@@ -15,7 +15,9 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#2c3139",
+  "background_color": "#ffcc00",
+  "display": "standalone",
+  "start_url": "/",
+  "id": "/?pwa=1"
 }

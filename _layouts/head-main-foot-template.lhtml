@@ -5,7 +5,6 @@ layout: body-template
     {% include header-content.lhtml %}
 </header>
 <main>
-    <div class="wadding"></div>
     {{ content }}
 </main>
 <footer>

@@ -11,7 +11,7 @@ linked-resources:
   - href: "https://fonts.gstatic.com"
     rel: "preconnect"
     crossorigin: true
-  - href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ultra&display=swap"
+  - href: "https://fonts.googleapis.com/css2?family=Staatliches&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
     rel: "stylesheet"
 
 local-js:
@@ -39,7 +39,6 @@ local-js:
 {% endif %}
 {% assign all-local-js = all-local-js | uniq %}
 {% for js in all-local-js %}
-  <!--script type="text/javascript" src="{{ js | relative_url }}?{{ epoch-ms }}"></!--script-->
   <script type="text/javascript" src="{{ js | relative_url }}"></script>
 {% endfor %}
 
@@ -52,5 +51,5 @@ local-js:
 {% endif %}
 {% assign all-external-js = all-external-js | uniq %}
 {% for js in all-external-js %}
-  <script src="{{ js.href }}"{% if js.async %}{{ " async" }}{% endif %}{% if js.defer %}{{ " defer" }}{% endif %}></script>
+  <script src="{{ js.href }}"{% if js.async %}{{ " async" }}{% endif %}{% if js.defer %}{{ " defer" }}{% endif %}></scrip>
 {% endfor %}
